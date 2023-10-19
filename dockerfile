@@ -19,12 +19,13 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Copy Pterodactyl.io Panel code into the container
 COPY . /app
 
-# Set up Nginx configuration
+# Copy nginx.conf from the build context to the container
 COPY nginx.conf /etc/nginx/sites-available/default
 
 # Expose ports
 EXPOSE 80
 EXPOSE 443
+
 
 # Environment variables
 ENV MYSQL_DATABASE=panel
